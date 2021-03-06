@@ -1,0 +1,16 @@
+.localVideo {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+  -moz-transform: rotateY(180deg); /* Firefox */
+}
+/* 
+video {
+
+  } */
+/* video:-webkit-full-scren {
+    transform: rotateY(180deg) !important;
+  }
+   */
+video {
+  width: 400px;
+}
