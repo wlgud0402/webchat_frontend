@@ -53,26 +53,12 @@ const Room2 = ({ location }) => {
     const chatBodyElement = chatBodyRef.current;
     chatBodyElement.scrollTop = chatBodyElement.scrollHeight;
   }, [chattings.length]);
-  // const scrollToBottom = () => {
-  //   const chatBodyElement = chatBodyRef.current;
-  //   chatBodyElement.scrollTop = chatBodyElement.scrollHeight;
-  //   console.log(chatBodyRef);
-  // };
 
   const onCopyToClipboard = (e) => {
     alert("초대주소가 클립보드에 저장되었습니다.");
   };
   let uuid = document.location.href.split("/room2/")[1];
   const [disconnectedUser, setDisconnectedUser] = useState("");
-
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("...");
-  //   };
-  // }, []);
-
-  // peerjs --port 3001 => 새로운 터미널에서 peerjs를 키고 여기서 거기로 붙는다
-  // const [pips, setPips] = useState([]);
 
   useEffect(() => {
     (async () => {

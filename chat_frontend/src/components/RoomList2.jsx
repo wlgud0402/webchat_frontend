@@ -20,10 +20,6 @@ const RoomList2 = () => {
       const res = await axios.get("/api/chat/room/");
       setRoomList(res.data);
 
-      // room-refresh 이벤트를 받기위한 소켓
-      // socket = io(ENDPOINT, {
-      //   transports: ["websocket", "polling", "flashsocket"],
-      // });
       socket = io("http://3.36.99.83/socket.io");
       socket.emit("join-roomlist", "데이터잘가나여!");
 
@@ -282,12 +278,3 @@ const StyleRoomNumber = styled.div`
 const StyleRoomName = styled.div`
   font-size: 30px;
 `;
-
-/* // width: 100%;
-// height: 100%;
-// display: flex;
-// flex-direction: column;
-// -webkit-box-align: center;
-// align-items: center;
-// background-color: rgb(255, 255, 255);
-// margin-bottom: 30px; */

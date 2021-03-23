@@ -2,14 +2,6 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import axios from "axios";
 
-// const googleLogin = async (accesstoken) => {
-//   let res = await axios.post("http://localhost:8000/rest-auth/google/", {
-//     access_token: accesstoken,
-//   });
-//   console.log(res);
-//   return await res.status;
-// };
-// let history = useHistory();
 const responseGoogle = async (response) => {
   let idx = response.profileObj.email.indexOf("@");
   let nickname = response.profileObj.email.substring(0, idx);
