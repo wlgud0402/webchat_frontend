@@ -14,7 +14,7 @@ const responseGoogle = async (response) => {
   let idx = response.profileObj.email.indexOf("@");
   let nickname = response.profileObj.email.substring(0, idx);
 
-  const axiosres = await axios.post("http://localhost:8000/api/user/", {
+  const axiosres = await axios.post("/api/user/", {
     google_id: response.profileObj.googleId,
     email: response.profileObj.email,
     nickname: nickname,

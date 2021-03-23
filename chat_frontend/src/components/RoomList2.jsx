@@ -17,19 +17,18 @@ const RoomList2 = () => {
   const [roomList, setRoomList] = useState([]);
   useEffect(() => {
     (async () => {
-      const res = await axios.get("http://localhost:8000/api/chat/room/");
+      const res = await axios.get("/api/chat/room/");
       setRoomList(res.data);
 
       // room-refresh 이벤트를 받기위한 소켓
-      socket = io(ENDPOINT, {
-        transports: ["websocket", "polling", "flashsocket"],
-      });
+      // socket = io(ENDPOINT, {
+      //   transports: ["websocket", "polling", "flashsocket"],
+      // });
+      socket = io("http://3.36.99.83/socket.io");
       socket.emit("join-roomlist", "데이터잘가나여!");
 
       socket.on("room-refresh", async (data) => {
-        const refreshRes = await axios.get(
-          "http://localhost:8000/api/chat/room/"
-        );
+        const refreshRes = await axios.get("/api/chat/room/");
         setRoomList(() => refreshRes.data);
       });
     })();
@@ -66,16 +65,14 @@ const RoomList2 = () => {
   //방의 상태가 ACTIVE일때와 CLEANING일때만 보여줘야함
   const onClickIntoRoom = async (e) => {
     const id = e.target.id;
-    const res = await axios.get(
-      `http://localhost:8000/api/chat/room/?id=${id}`
-    );
+    const res = await axios.get(`/api/chat/room/?id=${id}`);
     //방이 잠금되어있다면
     if (res.data.is_private) {
       const room_password = prompt("방 비밀번호를 입력해주세요...");
-      const check_res = await axios.post(
-        "http://localhost:8000/api/chat/room/",
-        { password: room_password, id: e.target.id }
-      );
+      const check_res = await axios.post("/api/chat/room/", {
+        password: room_password,
+        id: e.target.id,
+      });
       if (check_res.data.uuid) {
         history.push(`/room2/${check_res.data.uuid}`);
       } else {

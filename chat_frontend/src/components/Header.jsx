@@ -32,10 +32,10 @@ const Header = () => {
       if (newNickname !== null) {
         if (newNickname.length !== 0) {
           //제대로된 입력
-          const newInfo = await axios.put(
-            "http://localhost:8000/api/user/changeUserNickname/",
-            { user_id: userInfo.user_id, new_nickname: newNickname }
-          );
+          const newInfo = await axios.put("/api/user/changeUserNickname/", {
+            user_id: userInfo.user_id,
+            new_nickname: newNickname,
+          });
           localStorage.setItem("user_token", newInfo.data.user_token);
 
           let newUserToken = localStorage.getItem("user_token");
