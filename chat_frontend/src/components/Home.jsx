@@ -9,15 +9,12 @@ import styled from "styled-components";
 import axios from "axios";
 
 const Home = () => {
-  // const [userInfo, setUserInfo] = useState("");
-
   let history = useHistory();
   if (localStorage.getItem("user_token")) {
     let user_token = localStorage.getItem("user_token");
     let info = jwt_decode(user_token);
   }
 
-  // { user_id : 12, email   : "wlgudrlgus@naver.com", nickname: "wlgudrlgus"}
   const onClickStartMeeting = (e) => {
     if (localStorage.getItem("user_token")) {
       let user_token = localStorage.getItem("user_token");
@@ -38,7 +35,6 @@ const Home = () => {
   return (
     <>
       <Header />
-      {/* <button onClick={onTest}>요청테스트</button> */}
       <Carousel>
         <Carousel.Item style={{ height: "55vh" }}>
           <img

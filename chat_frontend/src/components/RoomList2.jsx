@@ -21,7 +21,7 @@ const RoomList2 = () => {
       setRoomList(res.data);
 
       socket = io("http://3.36.99.83/socket.io");
-      socket.emit("join-roomlist", "데이터잘가나여!");
+      socket.emit("join-roomlist");
 
       socket.on("room-refresh", async (data) => {
         const refreshRes = await axios.get("/api/chat/room/");
@@ -131,11 +131,6 @@ const RoomList2 = () => {
               </button>
             </ButtonBox>
           </StyleRoomName>
-          {/* <ButtonBox>
-            <button onClick={onClickIntoRoom} id={room.number}>
-              참여하기
-            </button>
-          </ButtonBox> */}
         </CleaningCardBox>
       );
     }
